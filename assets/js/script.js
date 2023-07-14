@@ -1,5 +1,5 @@
 var cardSectionElement = $("#card-section");
-var cardListElement = $("#card-lists");
+var cardListElement = $(".card-lists");
 var plantCardTitle = $(".plantcard-title");
 var scientificNameLiElement = $(".scientific-name");
 var cycleLiElement = $(".cycle");
