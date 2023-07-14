@@ -1,15 +1,23 @@
+var cardSectionElement = $("#card-section");
+var cardListElement = $("#card-lists");
+var plantCardTitle = $(".plantcard-title");
+var scientificNameLiElement = $(".scientific-name");
+var cycleLiElement = $(".cycle");
+var wateringLiElement = $(".watering");
+var searchBtn = $(".search-button");
+
 var fakePlantListAPI = [
     {
-        "id": 1,
-        "common_name": "European Silver Fir",
-        "scientific_name": [
+        id: 1,
+        common_name: "European Silver Fir",
+        scientific_name: [
             "Abies alba"
         ],
         "other_name": [
             "Common Silver Fir"
         ],
-        "cycle": "Perennial",
-        "watering": "Frequent",
+        cycle: "Perennial",
+        watering: "Frequent",
         "sunlight": [],
         "default_image": {
             "image_id": 9,
@@ -24,13 +32,13 @@ var fakePlantListAPI = [
         }
     },
     {
-        "id": 2,
-        "common_name": "Pyramidalis Silver Fir",
-        "scientific_name": [
+        id: 2,
+        common_name: "Pyramidalis Silver Fir",
+        scientific_name: [
             "Abies alba 'Pyramidalis'"
         ],
-        "cycle": "Perennial",
-        "watering": "Frequent",
+        cycle: "Perennial",
+        watering: "Frequent",
         "sunlight": [],
         "other_name": null,
         "default_image": {
@@ -158,4 +166,18 @@ var fakePlantDetailAPI = [
           "thumbnail": "https://perenual.com/storage/species_image/2_abies_alba_pyramidalis/thumbnail/49255769768_df55596553_b.jpg"
         }
     }
-]
+];
+
+
+
+//this function was created to generate cards that show information based on our fake data 
+var generateFakeCard = function() {
+    for (var i = 0; i < fakePlantListAPI.length; i++)
+        plantCardTitle.innerText = fakePlantListAPI[i].common_name
+        scientificNameLiElement.innerText = fakePlantListAPI[i].scientific_name[i]
+        cycleLiElement.innerText = fakePlantListAPI[i].cycle
+        wateringLiElement.innerText = fakePlantListAPI[i].watering
+
+};
+
+searchBtn.on("click", generateFakeCard());
