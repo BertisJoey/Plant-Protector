@@ -4,7 +4,7 @@ var plantCardTitle = $(".plantcard-title");
 var scientificNameLiElement = $(".scientific-name");
 var cycleLiElement = $(".cycle");
 var wateringLiElement = $(".watering");
-var searchBtn = $(".search-button");
+var searchBtn = $("#search-button");
 
 var fakePlantListAPI = [
     {
@@ -172,12 +172,18 @@ var fakePlantDetailAPI = [
 
 //this function was created to generate cards that show information based on our fake data 
 var generateFakeCard = function() {
-    for (var i = 0; i < fakePlantListAPI.length; i++)
-        plantCardTitle.innerText = fakePlantListAPI[i].common_name
-        scientificNameLiElement.innerText = fakePlantListAPI[i].scientific_name[i]
-        cycleLiElement.innerText = fakePlantListAPI[i].cycle
-        wateringLiElement.innerText = fakePlantListAPI[i].watering
+    for (var i = 0; i < plantCardTitle.length; i++)
+        plantCardTitle.text(fakePlantListAPI[i].common_name);
+
+    for (var i = 0; i < scientificNameLiElement.length; i++)
+        scientificNameLiElement.text("Scientific Name: " + fakePlantListAPI[i].scientific_name[0]);
+
+    for (var i = 0; i < cycleLiElement.length; i++)
+        cycleLiElement.text("Cycle: " + fakePlantListAPI[i].cycle);
+
+    for (var i = 0; i < wateringLiElement.length; i++)
+        wateringLiElement.text("Watering: " + fakePlantListAPI[i].watering);
 
 };
 
-searchBtn.on("click", generateFakeCard());
+generateFakeCard();
