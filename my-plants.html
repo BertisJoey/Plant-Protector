@@ -8,24 +8,29 @@
     <link rel="style" href="./assets/css/style.css"/>
     <title>Plant Protector</title>
 </head>
-<body>
-    <header class="header">
-        <h1>Plant Protector</h1>
-        <nav class="navbar is-transparent">
-            <div id="navbarExampleTransparentExample" class="navbar-menu">
+<body>     
+    <nav class="navbar is-transparent has-shadow is-primary">
+        <h1 class="navbar-item" id="header">Plant Protector</h1>
+        <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="./index.html">
+              Home
+            </a>
             <div class="navbar-start">
-                <a class="navbar-item" href="./index.html">
-                Home
-                </a>
-                <div class="navbar-start">
-                <a class="navbar-item" href="./my-plants.html">
-                    My Plants
-                </a>
-                </div>
+              <a class="navbar-item" href="./my-plants.html">
+                My Plants
+              </a>
             </div>
-            </div>
-        </nav>
-    </header>
+          </div>
+        </div>
+    </nav>
+
 <script src="./assets/js/script.js"></script>  
 </body>
 </html>
