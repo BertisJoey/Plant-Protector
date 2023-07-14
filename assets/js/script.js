@@ -159,3 +159,9 @@ var fakePlantDetailAPI = [
         }
     }
 ]
+var searchBtn = document.querySelector("#search-button")
+searchBtn.addEventListener("click", function(event) {
+    event.preventDefault;
+    console.log("hello World")   
+}
+)
