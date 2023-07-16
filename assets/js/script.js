@@ -1,13 +1,7 @@
 var cardDiv = $(".card");
 var cardListElement = $(".card-lists");
-var plantCardTitle = $(".plantcard-title");
-var scientificNameLiElement = $(".scientific-name");
-var cycleLiElement = $(".cycle");
-var wateringLiElement = $(".watering");
 var columnDiv = $(".columns")
 var searchBtn = $("#search-button");
-
-
 var fakePlantListAPI = [
     {
         id: 1,
@@ -59,10 +53,10 @@ var fakePlantListAPI = [
         id: 3,
         common_name: "Pyramidalis Silver Fir 3",
         scientific_name: [
-            "Abies alba 'Pyramidalis'"
+            "Abies alba 'Pyramidalis2'"
         ],
-        cycle: "Perennial",
-        watering: "Frequent",
+        cycle: "Perennial 2",
+        watering: "Frequent2 ",
         "sunlight": [],
         "other_name": null,
         "default_image": {
@@ -81,10 +75,10 @@ var fakePlantListAPI = [
         id: 4,
         common_name: "Pyramidalis Silver Fir 4",
         scientific_name: [
-            "Abies alba 'Pyramidalis'"
+            "Abies alba 'Pyramidalis3'"
         ],
-        cycle: "Perennial",
-        watering: "Frequent",
+        cycle: "Perennial3",
+        watering: "Frequent3",
         "sunlight": [],
         "other_name": null,
         "default_image": {
@@ -214,27 +208,46 @@ var fakePlantDetailAPI = [
         }
     }
 ];
-console.log(cardDiv)
 var generateCards = function() {
-    for(var i = 0; i < fakePlantListAPI.length; i++) {
+ 
+    for(var i = 0; i < fakePlantListAPI.length-1; i++) {
       cardDiv.clone().appendTo(columnDiv);
     }
 }
+
+
+
 generateCards();
+
+
+
+
+
 //this function was created to generate cards that show information based on our fake data 
 var generateFakeCard = function() {
-    for (var i = 0; i < plantCardTitle.length; i++)
-        plantCardTitle.text(fakePlantListAPI[i].common_name);
+    var plantCardTitle = $(".plantcard-title");
+    plantCardTitle.each(function(index){
+        $(this).text(fakePlantListAPI[index].common_name)
+    })
 
-    for (var i = 0; i < scientificNameLiElement.length; i++)
-        scientificNameLiElement.text("Scientific Name: " + fakePlantListAPI[i].scientific_name[0]);
+    var scientificNameLiElement = $(".scientific-name");
+    scientificNameLiElement.each(function(index) {
+        $(this).text("Scientific Name: " + fakePlantListAPI[index].scientific_name[0])
+    })
 
-    for (var i = 0; i < cycleLiElement.length; i++)
-        cycleLiElement.text("Cycle: " + fakePlantListAPI[i].cycle);
+    var cycleLiElement = $(".cycle");
+    cycleLiElement.each(function(index) {
+        $(this).text("Cycle: " + fakePlantListAPI[index].cycle)
+    })
 
-    for (var i = 0; i < wateringLiElement.length; i++)
-        wateringLiElement.text("Watering: " + fakePlantListAPI[i].watering);
+    var wateringLiElement = $(".watering");
+    wateringLiElement.each(function(index) {
+        $(this).text("Watering: " + fakePlantListAPI[index].watering)
+    })
+
 
 };
 
 generateFakeCard();
+
+
