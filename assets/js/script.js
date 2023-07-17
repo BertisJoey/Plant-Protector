@@ -250,4 +250,6 @@ var generateFakeCard = function() {
 
 generateFakeCard();
 
-
+var storePlantInfo = function () {
+    
+}
