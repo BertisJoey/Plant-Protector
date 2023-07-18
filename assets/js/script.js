@@ -2,6 +2,7 @@ var cardDiv = $(".card");
 var cardListElement = $(".card-lists");
 var columnDiv = $(".columns")
 var searchBtn = $("#search-button");
+var saveBtn = $(".save-button");
 var fakePlantListAPI = [
     {
         id: 1,
@@ -225,6 +226,11 @@ generateCards();
 
 //this function was created to generate cards that show information based on our fake data 
 var generateFakeCard = function() {
+    var plantCardId = $(".plant-card-id");
+    plantCardId.each(function(index){
+        $(this).text(fakePlantListAPI[index].id)
+    })
+
     var plantCardTitle = $(".plantcard-title");
     plantCardTitle.each(function(index){
         $(this).text(fakePlantListAPI[index].common_name)
@@ -250,4 +256,11 @@ var generateFakeCard = function() {
 
 generateFakeCard();
 
+
+saveBtn.on("click", function() {
+    var plantId = $(this).parent().find(".plant-card-id").val();
+    var plantName = $(this).parent().find(".plantcard-title").val();
+
+    localStorage.setItem(plantId, plantName);
+});
 
