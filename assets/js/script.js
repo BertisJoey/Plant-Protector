@@ -4,6 +4,7 @@ var cardListElement = $(".card-lists");
 var columnDivGeneric = $(".columns-generic")
 var columnDivDetailed = $(".columns-detailed")
 var searchBtn = $("#search-button");
+var saveBtn = $(".save-button");
 var fakePlantListAPI = [
     {
         id: 1,
@@ -456,6 +457,11 @@ generateMyPlant();
 
 //This function was created to generate cards that show information based on our fake data 
 var generateFakeCard = function() {
+    var plantCardId = $(".plant-card-id");
+    plantCardId.each(function(index){
+        $(this).text(fakePlantListAPI[index].id)
+    })
+
     var plantCardTitle = $(".plantcard-title");
     plantCardTitle.each(function(index){
         $(this).text(fakePlantListAPI[index].common_name)
@@ -483,6 +489,16 @@ var generateFakeCard = function() {
 
 
 };
+
+var burgerIcon = document.querySelector('#burger');
+var navbarMenu = document.querySelector('#nav-links');
+
+burgerIcon.addEventListener('click', () => {
+    navbarMenu.classList.toggle('is-active');
+
+});
+
+
 generateFakeCard();
 
 //This function renders data onto the My Plants Page Cards
@@ -572,3 +588,10 @@ var myPlantsPageCardInfo = function() {
 }
 
 myPlantsPageCardInfo();
+saveBtn.on("click", function() {
+    var plantId = $(this).parent().find(".plant-card-id").val();
+    var plantName = $(this).parent().find(".plantcard-title").val();
+
+    localStorage.setItem(plantId, plantName);
+});
+

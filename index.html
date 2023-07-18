@@ -11,13 +11,13 @@
 <body>
     <nav class="navbar is-transparent has-shadow is-primary">
         <h1 class="navbar-item" id="header">Plant Protector</h1>
-        <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+        <div class="navbar-burger" id="burger" data-target="navbarExampleTransparentExample">
             <span></span>
             <span></span>
             <span></span>
         </div>
         
-        <div id="navbarExampleTransparentExample" class="navbar-menu">
+        <div id="nav-links" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="./index.html">
               Home
@@ -52,8 +52,8 @@
 
         </div>
         </div>
-        <div class="columns columns-generic">
-            <div class="card mt-4 mx-1 column-3 generic-card">
+        <div class="columns is-centered is-flex-wrap-wrap columns-generic">
+            <div class="card mt-6 mx-3 column-3 generic-card">
                 <div class="card-content">
                     <div class="media-content">
                         <p class="title is-4 plantcard-title"></p>
@@ -66,11 +66,15 @@
                 </div>
                 <div class="content card-lists">
                     <ul>
+                        <li class="plant-card-id"></li>
                         <li class="scientific-name"></li>
                         <li class="cycle"></li>
                         <li class="watering"></li>
                     </ul>
                 </div>
+                <div class="buttons mb-3 is-justify-content-center">
+                    <button class="button save-button is-success">Add</button>
+                  </div>
                 </div>
             </div>
     </main>
