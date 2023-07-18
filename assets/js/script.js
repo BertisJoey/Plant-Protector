@@ -2,7 +2,6 @@ var cardDiv = $(".card");
 var cardListElement = $(".card-lists");
 var columnDiv = $(".columns")
 var searchBtn = $("#search-button");
-var saveBtn = $(".save-button");
 var fakePlantListAPI = [
     {
         id: 1,
@@ -266,10 +265,9 @@ burgerIcon.addEventListener('click', () => {
 generateFakeCard();
 
 
-saveBtn.on("click", function() {
-    var plantId = $(this).parent().find(".plant-card-id").val();
-    var plantName = $(this).parent().find(".plantcard-title").val();
+$(".save-button").on("click", function() {
+    var plantId = $(this).parent().find(".plant-card-id").text();
+    var plantName = $(this).parent().find(".plantcard-title").text();
 
     localStorage.setItem(plantId, plantName);
 });
-
