@@ -78,8 +78,8 @@ burgerIcon.addEventListener('click', () => {
 
 
 //This function renders data onto the My Plants Page Cards
-function myPlantsPageCardInfo(plantDetails) {a
-    console.log(plantDetails)
+function myPlantsPageCardInfo(plantDetails) {
+
     var detailedPlantCardTitle = $(".plantcard-title-detailed");
     detailedPlantCardTitle.each(function(index){
         
