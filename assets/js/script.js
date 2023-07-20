@@ -78,7 +78,7 @@ burgerIcon.addEventListener('click', () => {
 
 //This function renders data onto the My Plants Page Cards
 function myPlantsPageCardInfo(plantDetails) {
-
+    debugger;
     var detailedPlantCardTitle = $(".plantcard-title-detailed");
     detailedPlantCardTitle.each(function(index){
         
@@ -204,15 +204,10 @@ function generateSearchData(keyword, cycleInfo, wateringInfo, sunlightInfo) {
         .catch(searchErrorMessage)
 }
 function generateMyPlantsPage() {
-    var myPlantList = []
-    for(var i = 0; i < localStorage.length; i++) {
-        fetch("https://perenual.com/api/species/details/" + localStorage.key(i) + "?key=sk-JgED64b86fa2c636f1613")
-        .then(function(response) {
-            return response.json();
-        })
+    Promise.all(Object.keys(localStorage).map(key => fetch("https://perenual.com/api/species/details/" + key + "?key=sk-JgED64b86fa2c636f1613")))
+        .then((values) => Promise.all(values.map(value => value.json())))
         .then(function(data) {
-            myPlantList.push(data)
-            myPlantsPageCardInfo(myPlantList); 
+            myPlantsPageCardInfo(data); 
         })
         .catch(function(){
             $(".plant-page-error").removeClass("is-hidden")
@@ -222,7 +217,6 @@ function generateMyPlantsPage() {
         })
     }
         
-}
 
 generateMyPlantsPage();
 searchBtn.on("click", function(event) {
