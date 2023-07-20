@@ -180,7 +180,7 @@ function savePlant() {
 }
 //This gets the data from API that fills out our search
 function getSearchData (keyword, cycleInfo, wateringInfo, sunlightInfo) {
-    var searchURL = "https://perenual.com/api/species-list?key=sk-JgED64b86fa2c636f1613&q=" + keyword + cycleInfo + wateringInfo + sunlightInfo
+    var searchURL = "https://perenual.com/api/species-list?key=sk-Zd8T64b8775fcda5a1615&q=" + keyword + cycleInfo + wateringInfo + sunlightInfo
    return fetch(searchURL)
     .then(function(response) {
         return response.json();
@@ -225,11 +225,11 @@ searchBtn.on("click", function(event) {
     var cycleInfo = $("#cycle").val();
     var wateringInfo = $("#watering").val();
     var sunlightInfo = $("#sunlight").val();
+
+    $('.left-search').addClass('columns is-flex is-one-fifth is-flex-direction-column ml-2 mt-5');
     $(".card").removeClass('is-hidden');
     //clearSeachHistory()
     generateSearchData(keyword,cycleInfo,wateringInfo,sunlightInfo)
-
-    
 })
 
 
