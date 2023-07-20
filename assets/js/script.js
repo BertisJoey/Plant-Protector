@@ -232,7 +232,7 @@ searchBtn.on("click", function(event) {
     var wateringInfo = $("#watering").val();
     var sunlightInfo = $("#sunlight").val();
 
-    $('.left-search').addClass('columns is-flex is-one-third is-flex-direction-column ml-5 mt-5');
+    $('.left-search').addClass('columns is-flex is-one-fifth is-flex-direction-column ml-2 mt-5');
     $(".card").removeClass('is-hidden');
     //clearSeachHistory()
     generateSearchData(keyword,cycleInfo,wateringInfo,sunlightInfo)
