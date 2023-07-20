@@ -7,7 +7,6 @@ var searchBtn = $("#search-button");
 
 //This creates the cards for the search function
 function generateSearchCards(searchData) {
-    console.log(searchData)
     for(var i = 0; i < searchData.length-1; i++) {
       cardDivGeneric.clone().appendTo(columnDivGeneric);
     }
@@ -176,6 +175,7 @@ function savePlant() {
         var plantName = $(this).parent().find(".plantcard-title").text();
 
         localStorage.setItem(plantId, plantName);
+        $(this).addClass('is-hidden');
     });
 }
 //This gets the data from API that fills out our search
@@ -187,15 +187,18 @@ function getSearchData (keyword, cycleInfo, wateringInfo, sunlightInfo) {
     })
 }
 //This posts the error message when something goes wrong with the API call
-function searchErrorMessage(error){
-    console.log(error)
+function searchErrorMessage(){
+    $(".search-error").removeClass("is-hidden")
+    $(".search-alrt").on("click", function() {
+        $(".search-error").attr("class", "is-hidden")
+    })
 }
 function generateSearchData(keyword, cycleInfo, wateringInfo, sunlightInfo) {
     getSearchData(keyword, cycleInfo, wateringInfo, sunlightInfo)
         .then(function(data) {
-            console.log(data)
-            generateSearchCards(data.data)
-            generateSearchCardData(data.data)
+            const basicFlowers = data.data.filter(flower => flower.id <= 3000)
+            generateSearchCards(basicFlowers)
+            generateSearchCardData(basicFlowers)
         })
         .then(() => {savePlant()})
         .catch(searchErrorMessage)
@@ -211,9 +214,11 @@ function generateMyPlantsPage() {
             myPlantList.push(data)
             myPlantsPageCardInfo(myPlantList); 
         })
-        // .then(() => {})
-        .catch(function(error){
-            console.log(error)
+        .catch(function(){
+            $(".plant-page-error").removeClass("is-hidden")
+            $(".plant-page-alrt").on("click", function() {
+                $(".plant-page-error").attr("class", "is-hidden")
+            })
         })
     }
         
@@ -228,6 +233,17 @@ searchBtn.on("click", function(event) {
     var sunlightInfo = $("#sunlight").val();
 
     $('.left-search').addClass('columns is-flex is-one-third is-flex-direction-column ml-5 mt-5');
+    $(".card").removeClass('is-hidden');
     //clearSeachHistory()
     generateSearchData(keyword,cycleInfo,wateringInfo,sunlightInfo)
 })
+
+
+$(".delete").on("click", function() {
+        var myPlantCard = $(this).parent();
+        var myPlantKey = $(this).parent().find(".id-detailed").text();
+
+        myPlantCard.remove();
+        localStorage.removeItem(myPlantKey);
+})
+
