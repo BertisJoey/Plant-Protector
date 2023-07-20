@@ -176,6 +176,7 @@ function savePlant() {
         var plantName = $(this).parent().find(".plantcard-title").text();
 
         localStorage.setItem(plantId, plantName);
+        $(this).addClass('is-hidden');
     });
 }
 //This gets the data from API that fills out our search
