@@ -231,3 +231,7 @@ searchBtn.on("click", function(event) {
 
     
 })
+
+function deleteMyPlant() {
+    $
+}
