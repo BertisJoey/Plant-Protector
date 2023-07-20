@@ -227,6 +227,7 @@ searchBtn.on("click", function(event) {
     var cycleInfo = $("#cycle").val();
     var wateringInfo = $("#watering").val();
     var sunlightInfo = $("#sunlight").val();
+    $(".card").removeClass('is-hidden');
     //clearSeachHistory()
     generateSearchData(keyword,cycleInfo,wateringInfo,sunlightInfo)
 
