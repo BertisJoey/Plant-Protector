@@ -175,11 +175,12 @@ function savePlant() {
         var plantName = $(this).parent().find(".plantcard-title").text();
 
         localStorage.setItem(plantId, plantName);
+        $(this).addClass('is-hidden');
     });
 }
 //This gets the data from API that fills out our search
 function getSearchData (keyword, cycleInfo, wateringInfo, sunlightInfo) {
-    var searchURL = "https://perenual.com/api/species-list?key=sk-d5lW64b86f45863d31614&q=" + keyword + cycleInfo + wateringInfo + sunlightInfo
+    var searchURL = "https://perenual.com/api/species-list?key=&q=" + keyword + cycleInfo + wateringInfo + sunlightInfo
    return fetch(searchURL)
     .then(function(response) {
         return response.json();
@@ -205,7 +206,7 @@ function generateSearchData(keyword, cycleInfo, wateringInfo, sunlightInfo) {
 function generateMyPlantsPage() {
     var myPlantList = []
     for(var i = 0; i < localStorage.length; i++) {
-        fetch("https://perenual.com/api/species/details/" + localStorage.key(i) + "?key=sk-d5lW64b86f45863d31614")
+        fetch("https://perenual.com/api/species/details/" + localStorage.key(i) + "?key=sk-ne1G64b71de56ecfd1541")
         .then(function(response) {
             return response.json();
         })
